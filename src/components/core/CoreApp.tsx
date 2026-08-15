@@ -50,7 +50,9 @@ export function CoreApp({ userId }: { userId: string }) {
   const inSubScreen = acute ? acuteScreen !== "home" : reflectiveScreen !== "home";
 
   return (
-    <div className={`${acute ? "acute" : "reflective"} min-h-screen bg-background`}>
+    <div
+      className={`${acute ? "acute" : "reflective"} min-h-screen bg-background font-sans text-foreground`}
+    >
       <div className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-5 pt-5 pb-32">
         <header className="flex items-center justify-between">
           {inSubScreen ? (
