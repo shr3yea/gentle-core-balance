@@ -65,12 +65,7 @@ export function BodyCheckIn({ userId }: { userId: string }) {
   const pick = (zone: Zone) => {
     setActive(zone);
     // Silent background write, not user-facing.
-    void supabase
-      .from("body_checkins")
-      .insert({ user_id: userId, zone: zone.id })
-      .then(({ error }) => {
-        if (error) console.error("body_checkins insert", error);
-      });
+    void supabase.from("body_checkins").insert({ user_id: userId, zone: zone.id });
   };
 
   if (active) {
