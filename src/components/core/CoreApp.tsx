@@ -57,20 +57,23 @@ export function CoreApp({ userId }: { userId: string }) {
         <header className="flex items-center justify-between">
           {inSubScreen ? (
             <button
+              type="button"
+              aria-label="Back to the main list"
               onClick={() => (acute ? setAcuteScreen("home") : setReflectiveScreen("home"))}
               className="inline-flex items-center gap-2 text-base text-muted-foreground"
             >
-              <ArrowLeft className="size-5" /> Back
+              <ArrowLeft className="size-5" aria-hidden="true" /> Back
             </button>
           ) : (
             <span className="font-display text-2xl font-semibold">Core</span>
           )}
           <button
+            type="button"
             onClick={() => void supabase.auth.signOut()}
             aria-label="Sign out"
             className="text-muted-foreground"
           >
-            <LogOut className="size-5" />
+            <LogOut className="size-5" aria-hidden="true" />
           </button>
         </header>
 
@@ -89,9 +92,11 @@ export function CoreApp({ userId }: { userId: string }) {
       </div>
 
       {/* Mode toggle: Acute Mode is always one tap away, from anywhere. */}
-      <nav className="fixed inset-x-0 bottom-0 border-t border-border bg-card/95 backdrop-blur">
+      <nav aria-label="Mode" className="fixed inset-x-0 bottom-0 border-t border-border bg-card/95 backdrop-blur">
         <div className="mx-auto flex w-full max-w-xl gap-2 p-3">
           <button
+            type="button"
+            aria-pressed={acute}
             onClick={() => switchMode("acute")}
             className={`flex-1 rounded-2xl px-4 py-3 text-base font-medium ${
               acute ? "bg-primary text-primary-foreground" : "text-muted-foreground"
@@ -100,6 +105,8 @@ export function CoreApp({ userId }: { userId: string }) {
             Acute Mode
           </button>
           <button
+            type="button"
+            aria-pressed={!acute}
             onClick={() => switchMode("reflective")}
             className={`flex-1 rounded-2xl px-4 py-3 text-base font-medium ${
               !acute ? "bg-primary text-primary-foreground" : "text-muted-foreground"
@@ -146,10 +153,11 @@ function AcuteMode({
         return (
           <button
             key={tile.id}
+            type="button"
             onClick={() => setScreen(tile.id)}
             className="flex items-center gap-4 rounded-2xl bg-card p-6 text-left"
           >
-            <Icon className="size-6 shrink-0 text-primary" />
+            <Icon className="size-6 shrink-0 text-primary" aria-hidden="true" />
             <span>
               <span className="block text-lg font-medium">{tile.label}</span>
               <span className="block text-base text-muted-foreground">{tile.sub}</span>
@@ -158,7 +166,7 @@ function AcuteMode({
         );
       })}
       <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground">
-        <LifeBuoy className="mt-0.5 size-4 shrink-0" />
+        <LifeBuoy className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
         Core isn't crisis support. If you're in danger, contact a crisis line or someone you trust.
       </p>
     </div>
@@ -200,14 +208,15 @@ function ReflectiveMode({
         return (
           <button
             key={card.id}
+            type="button"
             onClick={() => setScreen(card.id)}
             className="relative flex items-center gap-4 rounded-2xl bg-card p-6 text-left shadow-paper transition-shadow hover:shadow-lift"
           >
             {card.id === "matrix" && (
-              <span className="absolute -top-3 left-10 h-6 w-24 rotate-[-3deg] rounded-[2px] bg-washi/80" />
+              <span aria-hidden="true" className="absolute -top-3 left-10 h-6 w-24 rotate-[-3deg] rounded-[2px] bg-washi/80" />
             )}
-            <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-sage/40">
-              <Icon className="size-5" />
+            <span aria-hidden="true" className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-sage/40">
+              <Icon className="size-5" aria-hidden="true" />
             </span>
             <span>
               <span className="block text-lg font-medium">{card.label}</span>

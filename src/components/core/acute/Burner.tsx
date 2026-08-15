@@ -45,6 +45,7 @@ export function Burner({ userId, onDone }: { userId: string; onDone: () => void 
         Write the worry down. Then either let it go, or set it aside for later.
       </p>
       <Textarea
+        aria-label="The worry you want to burn or vault"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="What's on you right now?"

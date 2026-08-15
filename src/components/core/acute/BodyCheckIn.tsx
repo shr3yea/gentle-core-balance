@@ -93,7 +93,7 @@ export function BodyCheckIn({ userId }: { userId: string }) {
     <div className="flex flex-col gap-6">
       <p className="text-base text-muted-foreground">Where do you feel it? Tap that part.</p>
       <div className="relative mx-auto w-full max-w-[280px]">
-        <svg viewBox="0 0 200 420" className="w-full" role="presentation">
+        <svg viewBox="0 0 200 420" className="w-full" role="presentation" aria-hidden="true" focusable="false">
           {/* silhouette */}
           <g className="fill-secondary">
             <circle cx="100" cy="46" r="34" />
@@ -107,24 +107,28 @@ export function BodyCheckIn({ userId }: { userId: string }) {
           </g>
         </svg>
         <button
-          aria-label="Head and brain"
+          aria-label="Head and brain — tap for tension and racing-thought exercises"
           onClick={() => pick(ZONES[0]!)}
-          className="absolute left-1/2 top-0 h-[19%] w-[38%] -translate-x-1/2 rounded-full hover:bg-primary/25 focus-visible:bg-primary/25"
+          type="button"
+          className="absolute left-1/2 top-0 h-[19%] w-[38%] -translate-x-1/2 rounded-full hover:bg-primary/25 focus-visible:bg-primary/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         />
         <button
-          aria-label="Chest and lungs"
+          aria-label="Chest and lungs — tap for breathing exercises"
           onClick={() => pick(ZONES[1]!)}
-          className="absolute left-1/2 top-[22%] h-[19%] w-[46%] -translate-x-1/2 rounded-3xl hover:bg-primary/25 focus-visible:bg-primary/25"
+          type="button"
+          className="absolute left-1/2 top-[22%] h-[19%] w-[46%] -translate-x-1/2 rounded-3xl hover:bg-primary/25 focus-visible:bg-primary/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         />
         <button
-          aria-label="Stomach and gut"
+          aria-label="Stomach and gut — tap for belly-calming exercises"
           onClick={() => pick(ZONES[2]!)}
-          className="absolute left-1/2 top-[47%] h-[19%] w-[40%] -translate-x-1/2 rounded-3xl hover:bg-primary/25 focus-visible:bg-primary/25"
+          type="button"
+          className="absolute left-1/2 top-[47%] h-[19%] w-[40%] -translate-x-1/2 rounded-3xl hover:bg-primary/25 focus-visible:bg-primary/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         />
         <button
-          aria-label="Muscles and skin"
+          aria-label="Muscles and skin — tap for muscle-release exercises"
           onClick={() => pick(ZONES[3]!)}
-          className="absolute left-1/2 top-[67%] h-[31%] w-[42%] -translate-x-1/2 rounded-3xl hover:bg-primary/25 focus-visible:bg-primary/25"
+          type="button"
+          className="absolute left-1/2 top-[67%] h-[31%] w-[42%] -translate-x-1/2 rounded-3xl hover:bg-primary/25 focus-visible:bg-primary/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         />
       </div>
       <div className="flex flex-col gap-3">
