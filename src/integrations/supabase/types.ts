@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      body_checkins: {
+        Row: {
+          created_at: string
+          id: string
+          user_id: string
+          zone: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          user_id: string
+          zone: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          user_id?: string
+          zone?: string
+        }
+        Relationships: []
+      }
+      dump_events: {
+        Row: {
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      moments: {
+        Row: {
+          caption: string
+          created_at: string
+          id: string
+          mood_tag: string
+          user_id: string
+        }
+        Insert: {
+          caption: string
+          created_at?: string
+          id?: string
+          mood_tag: string
+          user_id: string
+        }
+        Update: {
+          caption?: string
+          created_at?: string
+          id?: string
+          mood_tag?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      worries: {
+        Row: {
+          created_at: string
+          id: string
+          text: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          text: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          text?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
