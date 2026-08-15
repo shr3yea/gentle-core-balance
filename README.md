@@ -53,6 +53,15 @@ body_checkins — silent zone-tap logging
 dump_events — Brain Dump event markers only (never the text itself)
 moments — Moments Journal entries
 
+What's next
+
+Things I'd want to add with more time:
+
+Multilingual support — anxiety doesn't only show up in English, and this app should be usable in more than one language
+Ambient calming background sound — an optional soft, non-intrusive audio layer for Acute Mode
+Voice-guided breathing — a spoken voice dictating "breathe in, breathe out" for the box breathing exercise, so the app is usable without needing to look at the screen — especially important for visually impaired users, or for anyone who wants to close their eyes while grounding themselves
+Longer-term pattern insights (monthly/yearly), once there's enough usage data to make them meaningful instead of empty
+
 
 ## Development
 
