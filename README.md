@@ -1,75 +1,71 @@
-Core
+core
 
-Live demo: https://gentle-core-balance-e5jesi759-shr3yeas-projects.vercel.app
+tagline: core, for when your mind won't sit still
 
-I'm someone who usually feels anxious before exams, before an event, or before doing anything new. So I decided to build this app with a main focus on anxiety.
+live demo: https://gentle-core-balance.vercel.app
 
-Anxiety shows up in different forms harsh self-talk, racing thoughts, physical tension, lingering worries. This app treats these as connected signals, not separate tools, and personalizes itself over time based on the individual user's actual patterns, not preset menus.
+i am someone who usually feels anxious before exams, an event, or before doing anything new. so i decided to build this app whose main focus is on anxiety. anxiety shows up in different forms, harsh self talk, racing thoughts, physical tension, lingering worries, and moments of good that go unnoticed. this app treats these as connected signals, not separate tools, and personalizes itself over time based on the individual user's actual patterns, not preset menus.
 
-IMP!!!-Core is not a replacement for therapy or professional help. If you're in crisis, please reach out to a crisis line or someone you trust.
+core isn't a replacement for therapy or professional help. if you're in crisis, please reach out to a crisis line or someone you trust.
 
-Two Modes
+two modes
 
-There are two modes Acute Mode, for when someone is feeling very anxious, and Reflective Mode, for when they're calm.
+there are two modes, acute mode for when someone is feeling very anxious right now, and reflective mode for when they're calm.
 
-Acute Mode
+acute mode
 
-This mode focuses on making the user feel calm right now. It has:
+this mode focuses on making the user feel calm in the moment. it works fully offline, no gemini call needed, so it's available anywhere, anytime, even without signal.
 
-Box breathing and the 5-4-3-2-1 method — grounding exercises for the moment
-Works fully offline (no Gemini call needed) so it's available anywhere, anytime, even without signal
-Brain Dump — we usually have so many thoughts when we're anxious, and it feels really nice to dump them somewhere to clear our mind. Brain Dump lets you write out anything that's on your mind. It's never saved anywhere it disappears the moment you clear it.
-The Burner / Vault — similar idea to Brain Dump, but for something specific that's worrying you. You can burn it, and the worry disappears immediately, or vault it, and it's saved so you can come back to it later. When you open a vaulted worry, it asks if it's resolved yet or not. Worries can feel like a huge, unsolvable thing in the moment but nothing lasts forever, and even a worry eventually gets resolved. I wanted the Vault to reflect that.
-Body Check-In — anxiety can be felt in different parts of the body. This feature lets you tap the body part where you're feeling it, and it shows you something you can do to feel better or ease it.
-Reflective Mode
+box breathing and the 5 4 3 2 1 method are simple grounding exercises. box breathing has you follow an animated circle on a 4 4 4 4 count. 5 4 3 2 1 walks you through your senses one at a time, something you see, something you feel, something you hear, something you smell, something you taste, just to bring you back into your body.
 
-For when the person is calm. This is where the AI features live.
+brain dump is for when there are too many thoughts in your head to think straight. you write out whatever's there, and it's never saved anywhere. the second you clear it, it's gone. no pressure, no record of it, nothing to reread later.
 
-Reality Check Matrix — not a freeform chatbot, but a structured flow: you write down a thought, and it responds by validating the feeling first and asking a gentle reality check question, without minimizing anything. Then you can choose what kind of response you'd like  Gentle Friend, Evidence Examiner, or Tiny Action and it responds in that tone.
-Vault Review — come back to your vaulted worries whenever you want and check if they're resolved.
-Moments Journal — post photos and notes about small good things, even the tiniest ones. It shows a weekly recap so you can look back and feel good about what happened, even things you might've forgotten about otherwise.
+the burner and vault work with one specific worry instead of everything at once. you can burn it, and it disappears right away, or you can vault it, and it's saved so you can come back to it later. when you open a vaulted worry, it asks if it's still bothering you or not. worries can feel like a huge, unsolvable thing in the moment, but nothing lasts forever, and even a worry eventually gets resolved. i wanted the vault to reflect that instead of just being a list.
 
-I wanted to build a monthly or yearly version of this too, but didn't have enough time or data to demonstrate it properly, so that's a future addition.
+body check in lets you tap wherever you're feeling the anxiety in your body, head, chest, stomach, or muscles, and it shows you something specific you can actually do to ease it in that spot.
 
-Why AI is used the way it is
+reflective mode
 
-The Reflective Mode AI responses (Gemini) are only used where reflection actually needs judgment  the Reality Check Matrix and the optional Vault perspective note. Everything else (grounding, Brain Dump, Burner, Body Check-In) works without any AI call at all, on purpose those are moments where the priority is speed and privacy, not conversation. I didn't want AI everywhere just to say the app uses AI, I wanted it only where it actually adds something.
+for when the person is calm. this is where the ai features live.
 
-The Reality Check Matrix isn't one AI call, it's two, and that was intentional. The first call only validates the feeling and asks a gentle question back it doesn't try to fix or reframe anything yet, because jumping straight to "here's the solution" is exactly what makes people feel unheard when they're anxious. Only after that does the user get to pick how they want to be responded to — Gentle Friend, Evidence Examiner, or Tiny Action and the second AI call is shaped around that specific choice. So the AI isn't giving one generic response to everyone, it's adapting to how that person actually wants to be talked to in that moment.
+reality check matrix isn't a chatbot, it's a structured flow. you write down a thought that's bothering you, and it responds by validating the feeling first and asking a gentle reality check question, without minimizing anything or jumping straight to advice. then you get to choose how you want to be talked to next, gentle friend, evidence examiner, or tiny action, and it responds in that tone.
 
-Since this is a mood-related tool, I built in guardrails so the AI can't make a bad moment worse  it always validates before questioning, never uses toxic-positivity language, and if a message suggests someone might be in crisis, it stops the normal flow and points them to real support instead of continuing the exercise.
+vault review lets you come back to your vaulted worries whenever you want and check if they're resolved yet.
 
-Tech Stack
-React + TypeScript (Vite)
-Supabase — auth, Postgres database, and Edge Functions
-Row-level security scoped to auth.uid() on every table
-Gemini calls are routed server-side through Supabase Edge Functions, so the API key is never exposed to the client
-Gemini API — powers the Reality Check Matrix (two-stage call) and the optional Vault perspective note
-Bun as the package manager
-Built with Lovable
-Database tables
-worries — Burner/Vault entries (no timer or reopen field, by design)
-body_checkins — silent zone-tap logging
-dump_events — Brain Dump event markers only (never the text itself)
-moments — Moments Journal entries
+moments journal is for small good things, even the tiniest ones, kept as small as they actually are. it shows a rolling seven day view so you can look back and feel good about what happened, even things you might've otherwise forgotten. there's no streak pressure and no gap shaming, if you come back after any length of absence, you just get a warm welcome back instead of a broken streak or empty calendar.
 
-What's next
+i wanted to build a monthly or yearly version of this too, but didn't have enough time or data to demonstrate it properly, so that's something for later.
 
-Things I'd want to add with more time:
+why ai is used the way it is
 
-Multilingual support — anxiety doesn't only show up in English, and this app should be usable in more than one language
-Ambient calming background sound — an optional soft, non-intrusive audio layer for Acute Mode
-Voice-guided breathing — a spoken voice dictating "breathe in, breathe out" for the box breathing exercise, so the app is usable without needing to look at the screen — especially important for visually impaired users, or for anyone who wants to close their eyes while grounding themselves
-Longer-term pattern insights (monthly/yearly), once there's enough usage data to make them meaningful instead of empty
+the reflective mode ai responses, powered by gemini, are only used where reflection actually needs judgment, the reality check matrix and the optional vault perspective note. everything else, grounding, brain dump, burner, body check in, works without any ai call at all, on purpose. those are moments where the priority is speed and privacy, not conversation. i didn't want ai everywhere just to say the app uses ai, i wanted it only where it actually adds something.
 
+the reality check matrix isn't one ai call, it's two, and that was intentional. the first call only validates the feeling and asks a gentle question back, it doesn't try to fix or reframe anything yet, because jumping straight to "here's the solution" is exactly what makes people feel unheard when they're anxious. only after that does the user get to pick how they want to be responded to, and the second ai call is shaped around that specific choice. so the ai isn't giving one generic response to everyone, it's adapting to how that person actually wants to be talked to in that moment.
 
-## Development
+since this is a mood related tool, i built in guardrails so the ai can't make a bad moment worse. it always validates before questioning, never uses toxic positivity language, and if a message suggests someone might be in crisis, it stops the normal flow and points them to real support instead of continuing the exercise.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+tech stack
+react + typescript (vite)
+supabase, auth, postgres database, and edge functions
+row level security scoped to auth.uid() on every table
+gemini calls are routed server side through supabase edge functions, so the api key is never exposed to the client
+gemini api, free tier, powers the reality check matrix and the optional vault perspective note
+bun as the package manager
+built with lovable
+database tables
+worries, burner/vault entries, no timer or reopen field, by design
+body_checkins, silent zone tap logging
+dump_events, brain dump event markers only, never the text itself
+moments, moments journal entries
+what's not in this build
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+weekly pattern reflection and longer term (monthly/yearly) pattern insights were designed but not fully built, they need history to say anything meaningful, and i didn't have the time or data to demo them properly for this hackathon.
+
+what's next
+
+things i'd want to add with more time.
+
+multilingual support, anxiety doesn't only show up in english, and this app should be usable in more than one language
+ambient calming background sound
+voice guided breathing, a spoken voice dictating breathe in, breathe out for the box breathing exercise, so the app is usable without needing to look at the screen, especially important for visually impaired users, or for anyone who wants to close their eyes while grounding themselves
+longer term pattern insights (monthly/yearly), once there's enough usage data to make them
