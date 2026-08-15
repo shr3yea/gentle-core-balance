@@ -80,8 +80,12 @@ export function RealityMatrix() {
       </header>
 
       <div className="relative rounded-2xl bg-card p-6 shadow-paper">
-        <span className="absolute -top-3 left-8 h-6 w-24 rotate-[-2deg] rounded-[2px] bg-washi/80" />
+        <span
+          aria-hidden="true"
+          className="absolute -top-3 left-8 h-6 w-24 rotate-[-2deg] rounded-[2px] bg-washi/80"
+        />
         <Textarea
+          aria-label="The thought that's pulling at you"
           value={thought}
           onChange={(e) => setThought(e.target.value)}
           placeholder="e.g. If I say the wrong thing tomorrow, everyone will think less of me."
@@ -100,7 +104,11 @@ export function RealityMatrix() {
       </div>
 
       {validation && (
-        <div className="animate-rise rounded-2xl border border-border bg-secondary/60 p-6">
+        <div
+          role="status"
+          aria-live="polite"
+          className="animate-rise rounded-2xl border border-border bg-secondary/60 p-6"
+        >
           <p className="text-lg leading-relaxed whitespace-pre-line">{validation}</p>
         </div>
       )}
@@ -116,6 +124,8 @@ export function RealityMatrix() {
             return (
               <button
                 key={option.id}
+                type="button"
+                aria-pressed={selected}
                 onClick={() => chooseTone(option.id)}
                 disabled={busy}
                 className={`flex items-center gap-4 rounded-2xl border p-5 text-left transition-shadow ${
@@ -124,8 +134,11 @@ export function RealityMatrix() {
                     : "border-border bg-card hover:shadow-paper"
                 }`}
               >
-                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-sage/40">
-                  <Icon className="size-5" />
+                <span
+                  aria-hidden="true"
+                  className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-sage/40"
+                >
+                  <Icon className="size-5" aria-hidden="true" />
                 </span>
                 <span>
                   <span className="block text-lg font-medium">{option.label}</span>
@@ -138,11 +151,17 @@ export function RealityMatrix() {
       )}
 
       {busy && tone && !answer && (
-        <p className="text-base text-muted-foreground">Thinking it through…</p>
+        <p role="status" aria-live="polite" className="text-base text-muted-foreground">
+          Thinking it through…
+        </p>
       )}
 
       {answer && (
-        <div className="animate-rise rounded-2xl bg-card p-6 shadow-paper">
+        <div
+          role="status"
+          aria-live="polite"
+          className="animate-rise rounded-2xl bg-card p-6 shadow-paper"
+        >
           <p className="text-lg leading-relaxed whitespace-pre-line">{answer}</p>
         </div>
       )}

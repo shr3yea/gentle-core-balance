@@ -16,7 +16,7 @@ export function Disclaimer({ onDone }: { onDone: () => void }) {
           {step === 0 ? (
             <>
               <span className="inline-flex size-11 items-center justify-center rounded-full bg-sage/40 text-foreground">
-                <Heart className="size-5" />
+                <Heart className="size-5" aria-hidden="true" />
               </span>
               <h1 className="mt-5 text-3xl leading-tight font-semibold">Core</h1>
               <p className="mt-3 text-base leading-relaxed text-muted-foreground">
@@ -30,7 +30,7 @@ export function Disclaimer({ onDone }: { onDone: () => void }) {
           ) : (
             <>
               <span className="inline-flex size-11 items-center justify-center rounded-full bg-accent/60 text-accent-foreground">
-                <LifeBuoy className="size-5" />
+                <LifeBuoy className="size-5" aria-hidden="true" />
               </span>
               <h2 className="mt-5 text-2xl leading-snug font-semibold">Before you start</h2>
               <p className="mt-4 text-base leading-relaxed">
@@ -42,6 +42,7 @@ export function Disclaimer({ onDone }: { onDone: () => void }) {
                 I understand
               </Button>
               <button
+                type="button"
                 onClick={() => setStep(0)}
                 className="mt-3 w-full text-sm text-muted-foreground underline-offset-4 hover:underline"
               >

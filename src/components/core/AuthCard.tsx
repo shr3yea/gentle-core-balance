@@ -73,6 +73,7 @@ export function AuthCard() {
           </Button>
         </form>
         <button
+          type="button"
           onClick={() => setMode(mode === "in" ? "up" : "in")}
           className="mt-4 w-full text-sm text-muted-foreground underline-offset-4 hover:underline"
         >

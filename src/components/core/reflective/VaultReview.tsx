@@ -72,9 +72,16 @@ export function VaultReview() {
     return (
       <div className="flex flex-col gap-6">
         {released ? (
-          <div className="flex animate-pop flex-col items-center gap-4 py-16 text-center">
-            <span className="inline-flex size-14 items-center justify-center rounded-full bg-sage/50">
-              <Sparkles className="size-6" />
+          <div
+            role="status"
+            aria-live="polite"
+            className="flex animate-pop flex-col items-center gap-4 py-16 text-center"
+          >
+            <span
+              aria-hidden="true"
+              className="inline-flex size-14 items-center justify-center rounded-full bg-sage/50"
+            >
+              <Sparkles className="size-6" aria-hidden="true" />
             </span>
             <p className="text-2xl font-semibold">Let go.</p>
             <p className="max-w-xs text-base text-muted-foreground">
@@ -159,7 +166,10 @@ export function VaultReview() {
         </div>
       ) : (
         <>
-          <div className="relative mx-auto flex h-40 w-40 items-end justify-center rounded-b-[5rem] rounded-t-3xl border-2 border-border bg-secondary/40 p-3">
+          <div
+            aria-hidden="true"
+            className="relative mx-auto flex h-40 w-40 items-end justify-center rounded-b-[5rem] rounded-t-3xl border-2 border-border bg-secondary/40 p-3"
+          >
             <div className="flex w-full flex-wrap items-end justify-center gap-1 pb-4">
               {worries.slice(0, 18).map((worry, index) => (
                 <span
@@ -178,6 +188,7 @@ export function VaultReview() {
             {worries.map((worry) => (
               <button
                 key={worry.id}
+                type="button"
                 onClick={() => setOpen(worry)}
                 className="rounded-2xl bg-card p-5 text-left shadow-paper transition-shadow hover:shadow-lift"
               >

@@ -3,7 +3,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const STEPS = [
-  { count: 5, sense: "things you can see", hint: "Look around slowly. Name them out loud if you can." },
+  {
+    count: 5,
+    sense: "things you can see",
+    hint: "Look around slowly. Name them out loud if you can.",
+  },
   { count: 4, sense: "things you can feel", hint: "Fabric, floor, temperature, your own hands." },
   { count: 3, sense: "things you can hear", hint: "Near sounds, far sounds, your own breath." },
   { count: 2, sense: "things you can smell", hint: "Air, coffee, soap, anything at all." },
@@ -38,6 +42,8 @@ export function Grounding54321({ onFinish }: { onFinish: () => void }) {
 
   return (
     <button
+      type="button"
+      aria-label={`${step.count} ${step.sense}. ${step.hint} Activate to continue.`}
       onClick={() => setIndex((i) => i + 1)}
       className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-6 rounded-3xl bg-card px-6 py-14 text-center"
     >

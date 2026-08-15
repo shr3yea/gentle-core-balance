@@ -29,6 +29,7 @@ export function BrainDump({ userId }: { userId: string }) {
         Empty your head out here. Nothing is saved, nothing is read back to you.
       </p>
       <Textarea
+        aria-label="Brain dump. Nothing here is saved."
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Anything. Everything. No order needed."
