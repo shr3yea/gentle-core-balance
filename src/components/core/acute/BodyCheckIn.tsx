@@ -135,6 +135,7 @@ export function BodyCheckIn({ userId }: { userId: string }) {
         {ZONES.map((zone) => (
           <Button
             key={zone.id}
+            type="button"
             variant="secondary"
             className="h-14 justify-start text-base"
             onClick={() => pick(zone)}

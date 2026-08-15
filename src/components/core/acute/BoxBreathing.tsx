@@ -30,7 +30,7 @@ export function BoxBreathing() {
 
   return (
     <div className="flex flex-col items-center gap-10 py-6">
-      <div className="flex size-64 items-center justify-center rounded-full border border-border">
+      <div aria-hidden="true" className="flex size-64 items-center justify-center rounded-full border border-border">
         <div
           className="flex size-56 items-center justify-center rounded-full bg-primary/25 transition-transform duration-1000 ease-in-out"
           style={{ transform: `scale(${current.scale})` }}
@@ -38,7 +38,9 @@ export function BoxBreathing() {
           <span className="text-5xl font-semibold text-foreground">{count}</span>
         </div>
       </div>
-      <p className="text-2xl font-medium">{current.label}</p>
+      <p role="status" aria-live="polite" className="text-2xl font-medium">
+        {current.label}
+      </p>
       <p className="text-base text-muted-foreground">Follow the circle. In 4, hold 4, out 4, hold 4.</p>
     </div>
   );

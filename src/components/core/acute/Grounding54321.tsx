@@ -38,6 +38,8 @@ export function Grounding54321({ onFinish }: { onFinish: () => void }) {
 
   return (
     <button
+      type="button"
+      aria-label={`${step.count} ${step.sense}. ${step.hint} Activate to continue.`}
       onClick={() => setIndex((i) => i + 1)}
       className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-6 rounded-3xl bg-card px-6 py-14 text-center"
     >
