@@ -52,7 +52,11 @@ export function MomentsJournal() {
     setBusy(true);
     const { error } = await supabase
       .from("moments")
-      .insert({ caption: caption.trim(), mood_tag: mood, user_id: (await supabase.auth.getUser()).data.user!.id });
+      .insert({
+        caption: caption.trim(),
+        mood_tag: mood,
+        user_id: (await supabase.auth.getUser()).data.user!.id,
+      });
     setBusy(false);
     if (error) {
       toast.error("Couldn't save that moment.");
@@ -102,7 +106,10 @@ export function MomentsJournal() {
       )}
 
       <form onSubmit={add} className="relative rounded-2xl bg-card p-6 shadow-paper">
-        <span aria-hidden="true" className="absolute -top-3 left-8 h-6 w-24 rotate-[2deg] rounded-[2px] bg-washi/80" />
+        <span
+          aria-hidden="true"
+          className="absolute -top-3 left-8 h-6 w-24 rotate-[2deg] rounded-[2px] bg-washi/80"
+        />
         <Input
           aria-label="What happened? A short caption for this moment"
           value={caption}
@@ -127,7 +134,11 @@ export function MomentsJournal() {
             </button>
           ))}
         </div>
-        <Button type="submit" className="mt-5 h-12 w-full text-base" disabled={busy || !caption.trim()}>
+        <Button
+          type="submit"
+          className="mt-5 h-12 w-full text-base"
+          disabled={busy || !caption.trim()}
+        >
           Keep this moment
         </Button>
       </form>
@@ -144,7 +155,9 @@ export function MomentsJournal() {
                 aria-label={`${day.label}: ${day.moments} moments kept, ${day.body} body check-ins, ${day.dumps} brain dumps released`}
                 className="flex flex-col items-center gap-2 rounded-xl bg-card p-2 shadow-paper"
               >
-                <span aria-hidden="true" className="text-xs text-muted-foreground">{day.label}</span>
+                <span aria-hidden="true" className="text-xs text-muted-foreground">
+                  {day.label}
+                </span>
                 <span aria-hidden="true" className="flex flex-col items-center gap-1">
                   {total === 0 ? (
                     <span className="size-2 rounded-full bg-border" />

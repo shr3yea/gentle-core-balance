@@ -93,7 +93,13 @@ export function BodyCheckIn({ userId }: { userId: string }) {
     <div className="flex flex-col gap-6">
       <p className="text-base text-muted-foreground">Where do you feel it? Tap that part.</p>
       <div className="relative mx-auto w-full max-w-[280px]">
-        <svg viewBox="0 0 200 420" className="w-full" role="presentation" aria-hidden="true" focusable="false">
+        <svg
+          viewBox="0 0 200 420"
+          className="w-full"
+          role="presentation"
+          aria-hidden="true"
+          focusable="false"
+        >
           {/* silhouette */}
           <g className="fill-secondary">
             <circle cx="100" cy="46" r="34" />

@@ -92,7 +92,10 @@ export function CoreApp({ userId }: { userId: string }) {
       </div>
 
       {/* Mode toggle: Acute Mode is always one tap away, from anywhere. */}
-      <nav aria-label="Mode" className="fixed inset-x-0 bottom-0 border-t border-border bg-card/95 backdrop-blur">
+      <nav
+        aria-label="Mode"
+        className="fixed inset-x-0 bottom-0 border-t border-border bg-card/95 backdrop-blur"
+      >
         <div className="mx-auto flex w-full max-w-xl gap-2 p-3">
           <button
             type="button"
@@ -213,9 +216,15 @@ function ReflectiveMode({
             className="relative flex items-center gap-4 rounded-2xl bg-card p-6 text-left shadow-paper transition-shadow hover:shadow-lift"
           >
             {card.id === "matrix" && (
-              <span aria-hidden="true" className="absolute -top-3 left-10 h-6 w-24 rotate-[-3deg] rounded-[2px] bg-washi/80" />
+              <span
+                aria-hidden="true"
+                className="absolute -top-3 left-10 h-6 w-24 rotate-[-3deg] rounded-[2px] bg-washi/80"
+              />
             )}
-            <span aria-hidden="true" className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-sage/40">
+            <span
+              aria-hidden="true"
+              className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-sage/40"
+            >
               <Icon className="size-5" aria-hidden="true" />
             </span>
             <span>

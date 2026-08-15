@@ -3,7 +3,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const STEPS = [
-  { count: 5, sense: "things you can see", hint: "Look around slowly. Name them out loud if you can." },
+  {
+    count: 5,
+    sense: "things you can see",
+    hint: "Look around slowly. Name them out loud if you can.",
+  },
   { count: 4, sense: "things you can feel", hint: "Fabric, floor, temperature, your own hands." },
   { count: 3, sense: "things you can hear", hint: "Near sounds, far sounds, your own breath." },
   { count: 2, sense: "things you can smell", hint: "Air, coffee, soap, anything at all." },
