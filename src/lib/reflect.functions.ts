@@ -20,7 +20,7 @@ const TONE_PROMPTS: Record<ReflectTone, string> = {
 const VAULT_SYSTEM_PROMPT =
   "You are a supportive companion offering a brief perspective note on a worry a person set aside a while ago. Validate the feeling first in the person's own words, then offer one gentle, non-diagnostic perspective or question. Maximum three sentences. Never diagnose, never use clinical labels, never use toxic-positivity phrasing like 'it'll all work out.' If the message suggests intent to harm themselves or others, do not continue — gently encourage them to contact a crisis line or trusted person.";
 
-const GEMINI_MODEL = "gemini-2.5-flash";
+const GEMINI_MODEL = "gemini-3.7-flash";
 
 async function callModel(system: string, user: string): Promise<string> {
   const apiKey = process.env["GEMINI_API_KEY"];
