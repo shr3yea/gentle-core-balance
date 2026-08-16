@@ -20,31 +20,32 @@ const TONE_PROMPTS: Record<ReflectTone, string> = {
 const VAULT_SYSTEM_PROMPT =
   "You are a supportive companion offering a brief perspective note on a worry a person set aside a while ago. Validate the feeling first in the person's own words, then offer one gentle, non-diagnostic perspective or question. Maximum three sentences. Never diagnose, never use clinical labels, never use toxic-positivity phrasing like 'it'll all work out.' If the message suggests intent to harm themselves or others, do not continue — gently encourage them to contact a crisis line or trusted person.";
 
+const GEMINI_MODEL = "gemini-3.7-flash";
+
 async function callModel(system: string, user: string): Promise<string> {
-  const apiKey = process.env["LOVABLE_API_KEY"];
+  const apiKey = process.env["GEMINI_API_KEY"];
   if (!apiKey) {
     return "The reflection helper isn't available right now. Your own words are still here whenever you want to sit with them.";
   }
 
-  const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": apiKey,
+      },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: system }] },
+        contents: [{ role: "user", parts: [{ text: user }] }],
+      }),
     },
-    body: JSON.stringify({
-      model: "openai/gpt-5.6-sol",
-      reasoning_effort: "none",
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-    }),
-  });
+  );
 
   if (!response.ok) {
     const detail = await response.text();
-    console.error("AI gateway error", response.status, detail);
+    console.error("Gemini API error", response.status, detail);
     if (response.status === 429) {
       throw new Error("Too many requests right now — please try again in a moment.");
     }
@@ -52,13 +53,17 @@ async function callModel(system: string, user: string): Promise<string> {
   }
 
   const payload = (await response.json()) as {
-    choices?: { message?: { content?: string } }[];
+    candidates?: { content?: { parts?: { text?: string }[] } }[];
   };
-  const text = payload.choices?.[0]?.message?.content?.trim();
+  const text = payload.candidates?.[0]?.content?.parts
+    ?.map((part) => part.text ?? "")
+    .join("")
+    .trim();
   return text && text.length > 0
     ? text
     : "I don't have words for this one. Sitting with it gently is enough for now.";
 }
+
 
 /** Reality Check Matrix — call 1: validate + de-catastrophize. */
 export const reflectValidate = createServerFn({ method: "POST" })
